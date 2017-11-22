@@ -1,0 +1,145 @@
+<StoreHeader></StoreHeader>
+
+<div class="page_main">
+    <div class="shopCar_box">
+        <div class="page_top">
+            <div>
+                <i></i>
+                <span>购物车</span>
+            </div>
+        </div>
+        <div class="user_list">
+            <ng-container *ngIf="isEmptyCart">
+                <div class="car_empty">
+                    <span>您的购物车还是空的,赶紧行动吧!</span>
+                    <br>
+                    马上进入 <a href="javascript:;" routerLink="/index">全部商品</a> 挑选您喜欢的商品!
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!isEmptyCart">
+                <ul class="buy_flow">
+                    <li class="cur">
+                        <p>我的购物车</p>
+                    </li>
+                    <li class="cur">
+                        <span>&gt;</span>
+                    </li>
+                    <li>
+                        <p>填写订单信息</p>
+                    </li>
+                    <li>
+                        <span>&gt;</span>
+                    </li>
+                    <li>
+                        <p>完成订单</p>
+                    </li>
+                </ul>
+                <ul class="view_list">
+                    <!--全部订单 start-->
+                    <!--列表-->
+                    <li>
+                        <ul class="list_title clear">
+                            <li>商品信息</li>
+                            <li>规格</li>
+                            <li>单价(元)</li>
+                            <li>数量</li>
+                            <li>金额</li>
+                            <li>操作</li>
+                        </ul>
+                        <ul class="list_table">
+                            <li>
+                                <table style="width:100%;border:0;">
+                                    <tbody>
+                                        <tr *ngFor="let tmp of productMsg;let myIndex=index">
+                                            <td class="cartCheck" style="padding-left: 20px;border-bottom: 1px solid #d9e8ec;">
+                                                <span>
+                                                    <i class="cho_bg"></i>
+                                                    <em class="cho_bg_ok"></em>
+                                                    <input type="checkbox" Style="overflow:visible">
+                                                </span>
+                                            </td>
+                                            <td class="pro_left" style="border-bottom: 1px solid #d9e8ec;width:41.5%">
+                                                <div class="buy_pro_img">
+                                                    <a href="javascript:;">
+                                                        <img [src]="tmp.pic" width="114" height="114" alt="{{tmp.che_title}}">
+                                                    </a>
+                                                </div>
+                                                <div class="aleft">
+                                                    <a href="javascript:;">
+                                                        <b>{{tmp.fre_title}}</b>
+                                                    </a>
+                                                    <br>
+                                                    {{tmp.che_title}}
+                                                    <br><br>
+                                                    赠品：标配餐具10份  生日蜡烛1支
+                                                </div>
+                                            </td>
+                                            <td width="10%" style="border-bottom: 1px solid #d9e8ec;">
+                                                <div class="cake_num">{{tmp.weight}}磅</div>
+                                                <span>{{tmp.spec.split("+")[0]}}</span>
+                                            </td>
+                                            <td class="price" width="10%" style="border-bottom: 1px solid #d9e8ec;">¥{{tmp.price}}</td>
+                                            <td width="10%" style="border-bottom: 1px solid #d9e8ec;">
+                                                <div class="cake_num clear">
+                                                    <dl>
+                                                        <dd class="red" (click)="subLeft(myIndex)">-</dd>
+                                                        <dt>
+                                                            <input type="text" [(ngModel)]="buyCount[myIndex]"
+                                                             (blur)="confirmNum(myIndex)">
+                                                        </dt>
+                                                        <dd class="add" (click)="addRight(myIndex)">+</dd>
+                                                    </dl>
+                                                </div>
+                                            </td>
+                                            <td class="totalPrice" width="10%" style="border-bottom: 1px solid #d9e8ec;">¥{{totalPrice[myIndex]}}.00</td>
+                                            <td width="10%" style="border-bottom: 1px solid #d9e8ec;">
+                                                <a href="javascript:;" (click)="isDel()">删除</a>
+                                                <ng-container *ngIf="isShowDel">
+                                                    <div class="del_conform">
+                                                        <input type="submit" value="确定" (click)="delProduct(myIndex)">
+                                                        <input type="submit" value="取消" (click)="quXiaoDel()">
+                                                    </div>
+                                                </ng-container>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="border_top">
+                                            <td colspan="7" class="all_cho">
+                                                    <span>
+                                                        <i ></i>
+                                                        <em></em>
+                                                        <input type="checkbox">
+                                                    </span>
+                                                全选
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--分页条 点击购买-->
+                    <li class="clear">
+                        <div class="total_all">
+                            <span>
+                                <samp>
+                                    已选择<a href="javascript:;">{{allTotalCount}}</a>款商品
+                                </samp>
+                                合计(不含运费):
+                                <b>¥{{allTotalPrice}}.00</b>
+                            </span>
+                            <div>
+                                <input type="button" value="继续购物">
+                                <input type="button" value="结算">
+                            </div>
+                        </div>
+                    </li>
+                    <!--全部订单 end-->
+                </ul>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<StoreFooter></StoreFooter>

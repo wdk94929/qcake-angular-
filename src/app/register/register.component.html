@@ -1,0 +1,51 @@
+<StoreHeader></StoreHeader>
+<!-- 	网页注册页 -->
+<div class="register">
+    <div class="register-box">
+        <div class="register-left">
+            <ul>
+                <li>
+                    <span>会员注册</span>
+                </li>
+                <li>
+                    <input type="text" name="uname" id="user_name" placeholder="用户名"
+                     [(ngModel)]="inputUname" (blur)="valiUname()" (focus)="valiUnames()">
+                    <span>{{valiUnameMsg}}</span>
+                </li>
+                <li>
+                    <input type="text" name="uphone" id="user_phone" placeholder="手机号码"
+                     [(ngModel)]="inputPhone" (blur)="valiPhone()" (focus)="valiPhones()">
+                    <span>{{valiPhoneMsg}}</span>
+                </li>
+                <li>
+                    <input type="text" name="phone_confim" id="user_phone_confim" placeholder="手机验证码">
+                    <a href="javascript:;">发送验证码 >></a>
+                </li>
+                <li>
+                    <input type="password" name="upwd" id="user_pwd" placeholder="新密码"
+                     [(ngModel)]="inputUpwd" (blur)="valiUpwd()" (focus)="valiUpwds()">
+                    <span>{{valiUpwdMsg}}</span>
+                </li>
+                <li>
+                    <input type="password" id="user_pwd_confirm" placeholder="确认密码"
+                     [(ngModel)]="confirmUpwd" (blur)="valiConfirmUpwd()" (focus)="valiConfirmUpwds()">
+                    <span>{{confirmUpwdMsg}}</span>
+                </li>
+                <li>
+                    <i></i>
+                    <input type="checkbox" id="check_box" [(ngModel)]="checkBox" (click)="isAgree()">
+                    <span>同意《M'cake购物协议》</span>
+                </li>
+                <li>
+                    <input type="button" id="btn" value="提交" (click)="register()">
+                </li>
+            </ul>
+        </div>
+        <div class="register-right">
+            <i></i>
+            <p>我已经注册,<br>现在就去 <a href="2.login.html">登录</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<StoreFooter></StoreFooter>

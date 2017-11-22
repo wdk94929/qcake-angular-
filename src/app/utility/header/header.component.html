@@ -1,0 +1,69 @@
+<header class="header">
+<!-- 1.头部 -->
+  <div class="fixed_nav">
+      <div class="header-box">
+        <!-- 1.1logo -->
+        <div id="logo">
+          <a routerLink="/index">
+            <img src="images/logo.png" alt="">
+          </a>
+        </div>
+        <!-- 1.2头部注册栏 -->
+        <div id="register-box">
+          <ul>
+            <li>
+              <i></i>
+              <a href="javascript:;" routerLink="/cart">{{buyTotalCount}}件</a>
+            </li>
+            <ng-container *ngIf="isShowWelcome">
+              <li><a href="javascript:;" routerLink="/login">LOG IN 登录</a></li>
+              <li><a href="javascript:;" routerLink="/register">SIGN UP 注册</a></li>
+            </ng-container>
+            <ng-container *ngIf="!isShowWelcome">
+              <li>欢迎您&nbsp;<a href="javascript:;">{{uname}}</a></li>
+              <li><a href="javascript:;" (click)="loginOut()">[ 退出 ]</a></li>
+            </ng-container>
+          </ul>
+        </div>
+        <!-- 1.3头部功能栏 -->
+        <div id="header-bottom">
+          <!-- 右侧部分 -->
+          <div id="header-right">
+              <ul class="phone-delivery">
+                <li class="phone">
+                  <span>4006-678-678</span>
+                  <i></i>
+                </li>
+                <li class="delivery">
+                  <span><a href="javascript:;">配送范围内满100包邮</a></span>
+                  <i></i>
+                </li>
+              </ul>
+              <div id="sec-city">
+                <i (click)="selectCity()"></i>
+                <ul>
+                  <ng-container *ngFor="let tmp of citiesList;let cityIndex=index">
+                    <li class="show" *ngIf="tmp.isShow">
+                      <a href="javascript:;" (click)="handleClick(cityIndex)">{{tmp.city}}</a>
+                    </li>
+                  </ng-container>
+                </ul>
+              </div>
+          </div>
+          <div id="wall-box">
+            <ul class="menu">
+              <ng-container *ngFor="let tmp of headerList;let hoverIndex=index">
+              <li (mouseover)="handleover(hoverIndex)" (mouseout)="handleout(hoverIndex)" [ngClass]="{'menu-btn':true,'menu-show':isShow[hoverIndex]}">
+                <a href="javascript:;" (click)="jumpToIndex()">
+                  <span class="fench">{{tmp.freName}}</span>
+                  <span>{{tmp.cheName}}</span>
+                </a>
+              </li>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+  <!-- <script src="js/header.js"></script>  -->
+</header>

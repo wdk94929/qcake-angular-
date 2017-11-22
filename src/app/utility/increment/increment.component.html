@@ -1,0 +1,8 @@
+<div class="cake_num clear">
+    <span>数量</span>
+    <dl>
+        <dd (click)="subLeft()"></dd>
+        <dt><input type="text" [(ngModel)]="numCount" (blur)="confirmNum()" value="{{numCount}}"></dt>
+        <dd (click)="addRight()"></dd>
+    </dl>
+</div>

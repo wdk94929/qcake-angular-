@@ -1,0 +1,93 @@
+h1,h2,h3,h4,h5,h6,dl,dd,ul,ol,p,pre,body{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+body{
+	font:12px "微软雅黑",Arial,Helvetica,sans-serif;
+	color:#767676;
+	min-width: 1350px;
+}
+a{
+	text-decoration:none;
+	color:#767676;
+}
+a:hover{
+	color:#b0916a;
+}
+img{
+	vertical-align:bottom;
+}
+.clear:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.fixed_nav{
+	width:100%;
+	height:100px;
+	background:#fff;
+	position:fixed;
+	top:0;
+	left:0px;
+	z-index:2000;
+	box-shadow:3px 3px 3px #e1e1e1;
+}
+/**
+	添加成功的模态框
+*/
+#prop_container_box{
+	width: 100%;
+	height:100%;
+	background:#c4c4c4;
+	opacity:.3;
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:9111;
+	display:block;
+}
+
+#prop_box{
+	width:100%;
+	position:fixed;
+	top:25%;
+	z-index:10000;
+	display:block;
+}
+#prop_box .prop_content{
+	width:300px;
+	margin:0 auto;
+	border:1px solid #B0916A;
+	background:#fff;
+	border-radius:4px;
+}
+.prop_title{
+	background:#B0916A;
+	color:#fff;
+	height:40px;
+	line-height:40px;
+	padding:0 0 0 20px;
+}
+.prop_message{
+	background:#fff;
+	margin:10px;
+}
+.prop_message ul{
+	position:relative;
+	background:#fff;
+}
+.prop_message ul li{
+	float:left;
+}
+.prop_message ul li:first-child{
+	width:48px;
+	height:40px;
+	background:url("../../images/ebsig_bg.gif") no-repeat -96px -109px;
+	margin:10px;
+}
+.prop_message ul li:last-child{
+	padding:20px 0px 20px 10px;
+	margin-top:2px;
+}
+

@@ -1,0 +1,270 @@
+<StoreHeader></StoreHeader>
+<!--页面主体-->
+<div class="page_main clear">
+    <div class="page_main_top clear">
+        <div class="pro_img">
+            <div class="left_small_img">
+                <div class="top_btn">
+                    <i></i>
+                </div>
+                <div class="mid_sm_img">
+                    <ul>
+                      <li class="cur" *ngFor="let tmp of picMsg;let smIndex=index" (click)="chooseImg(smIndex)">
+                        <img [src]="tmp.sm" alt="">
+                      </li>
+                    </ul>
+                </div>
+                <div class="bottom_btn">
+                    <i></i>
+                </div>
+            </div>
+            <div class="right_big_img">
+                <ul class="hide_md_img" (mouseenter)="handleEnter()" (mouseleave)="handleLeave()" (mousemove)="move($event)">
+                    <li>
+                        <img [src]="mdUrl" alt="">
+                    </li>
+                    <ng-container *ngIf="isShowLg">
+                        <div class="zoom_pointer"></div>
+                    </ng-container>
+                </ul>
+                <!--<div class="zoom_pointer"></div>-->
+                <ng-container *ngIf="isShowLg">
+                    <div class="hide_bg_img">
+                        <ul>
+                            <li>
+                            <img [src]="lgUrl" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+                <p class="fre_font" *ngFor="let tmp of detailMsg">{{tmp.details.split("+")[0]}}</p>
+                <p class="che_font" *ngFor="let tmp of detailMsg">{{tmp.details.split("+")[1]}}</p>
+            </div>
+        </div>
+        <div class="pro_detail">
+            <div class="pro_name" *ngFor="let tmp of detailMsg">
+              <span>{{tmp.fre_title}}</span>
+              {{tmp.che_title}}
+            </div>
+            <div class="pro_price" *ngFor="let tmp of detailMsg">
+              ¥
+              <span>{{tmp.price}}</span>
+            </div>
+            <div class="pro_weight" *ngFor="let tmp of detailMsg">
+              <div>
+                <i></i>
+                <span>{{tmp.weight}}磅</span>
+              </div>
+            </div>
+            <div class="pro_desc" *ngFor="let tmp of detailMsg">
+              <span>{{tmp.spec.split("+")[0]}}</span>
+              <span>{{tmp.spec.split("+")[1]}}</span>
+              <p>{{tmp.spec.split("+")[2]}}</p>
+              <p>若不及时食用，请放置冰箱冷冻室储存</p>
+            </div>
+
+
+            <div class="cake_num">
+                <span>数量</span>
+                <dl class="clear">
+                    <dd (click)="subLeft()"></dd>
+                    <dt><input type="text" [(ngModel)]="numCount" (blur)="confirmNum()" value="{{numCount}}"></dt>
+                    <dd (click)="addRight()"></dd>
+                </dl>
+            </div>
+            <div class="add_content clear">
+                <div class="add_dolls">
+                    <div class="add_left">
+                        <span>换购</span>
+                    </div>
+                    <div class="add_center">
+                        <i></i>
+                        <div>
+                            购买任意款蛋糕<b>48</b>+元换购 <br>
+                            1/4牛奶生巧 M' chocolate
+                        </div>
+                    </div>
+                    <div class="add_right">
+                        <i><img src="images/change.jpg" alt=""></i>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+            <ul id="buy_btn_box" class="clear">
+                <li>
+                    <input type="button" class="addCart" [(ngModel)]="addCartName" 
+                     (mouseenter)="addCartEnter()" (mouseleave)="addCartLeave()"
+                     value="{{addCartName}}" (click)="addCart()">
+                </li>
+                <li>
+                    <input type="button" [(ngModel)]="rightNowName"
+                     (mouseenter)="rightNowEnter()" (mouseleave)="rightNowLeave()"
+                     value="{{rightNowName}}" (click)="rightNowBuy()">
+                </li>
+            </ul>
+            <div class="pro_explain">
+            </div>
+            <ul class="select_view clear">
+                <li>
+                    <span>Best Ingredient</span>
+                    <p>优质原材料</p>
+                </li>
+                <li>
+                    <span>Evaluation</span>
+                    <p>累计点评(67)</p>
+                </li>
+            </ul>
+            <ul class="view_list">
+                <li class="ingredient_show">
+                    <dl class="clear countries">
+                        <dd>
+                            <img src="images/new_nealand.jpg" alt="">
+                            <span>新西兰牛奶</span>
+                        </dd>
+                        <dd>
+                            <img src="images/Belgium.jpg" alt="">
+                            <span>比利时巧克力</span>
+                        </dd>
+                        <dd>
+                            <img src="images/French.jpg" alt="">
+                            <span>法国稀牛奶</span>
+                        </dd>
+                    </dl>
+                    <ul>
+                        <li class="Basic">
+                            <dl>
+                                <dd>
+                                    <span>Texture</span>
+                                    <span>口感</span>
+                                    <span>入口即化</span>
+                                </dd>
+                                <dd>
+                                    <span>Flavor</span>
+                                    <span>口味</span>
+                                    <span>草莓冰淇淋</span>
+                                </dd>
+                                <dd>
+                                    <span>Base</span>
+                                    <span>口味基底</span>
+                                    <span>ice cream</span>
+                                </dd>
+                                <dd>
+                                    <span>Sweetness</span>
+                                    <span>甜味</span>
+                                    <span>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </span>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </li>
+                <li class="evaluation_hide">
+                    <ul class="review_top clear">
+                        <li>非常好吃<span>(51)</span></li>
+                        <li>配送服务好<span>(47)</span></li>
+                        <li>口感细腻<span>(43)</span></li>
+                        <li>清甜可口<span>(35)</span></li>
+                        <li>蛋糕很漂亮<span>(44)</span></li>
+                    </ul>
+                    <ul class="review_list">
+                        <li>
+                            <p>好看！！！美美哒~口感也很好，草莓味的。</p>
+                            <div class="txt_box">
+                                <div>
+                                    <i></i>
+                                    <span>会员</span>
+                                    <span>137****0083</span>
+                                </div>
+                                <span class="review_time">2017-09-29 10:19:11</span>
+                            </div>
+                        </li>
+                        <li>
+                        <p>不是很甜，很不错</p>
+                        <div class="txt_box">
+                            <div>
+                                <i></i>
+                                <span>会员</span>
+                                <span>173****7119</span>
+                            </div>
+                            <span class="review_time">2017-09-26 14:22:44</span>
+                        </div>
+                    </li>
+                        <li>
+                            <p>不是很甜，很不错</p>
+                            <div class="txt_box">
+                                <div>
+                                    <i></i>
+                                    <span>会员</span>
+                                    <span>173****7119</span>
+                                </div>
+                                <span class="review_time">2017-09-26 14:22:44</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>不是很甜，很不错</p>
+                            <div class="txt_box">
+                                <div>
+                                    <i></i>
+                                    <span>会员</span>
+                                    <span>173****7119</span>
+                                </div>
+                                <span class="review_time">2017-09-26 14:22:44</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>不是很甜，很不错</p>
+                            <div class="txt_box">
+                                <div>
+                                    <i></i>
+                                    <span>会员</span>
+                                    <span>173****7119</span>
+                                </div>
+                                <span class="review_time">2017-09-26 14:22:44</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page_main_bottom">
+        <div class="designer">
+            <h1><img src="images/designer.png" alt=""></h1>
+            <p>Coeur du fille sous le ciel bleu, Comme la tentation de la crème glacée à la fraise, si frais, si doux. A ce moment, je suis tombé amoureux avec l’été.<br>蓝色静谧下隐藏粉红色的少女心，草莓冰淇淋的诱惑，甜香沁入舌尖，犹如粉色的甜心瞬间俘获你的味蕾，这一刻，爱上夏天。
+            </p>
+        </div>
+        <div class="cake_42">
+        </div>
+        <div class="class_title">
+            <div class="hot_pro">
+                <i></i>
+                <span>销量排行榜</span>
+            </div>
+        </div>
+        <div class="cake-box" id="cake-box">
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="isShowSuccModel">
+    <div id="prop_container_box"></div>
+    <div id="prop_box">
+        <div class="prop_content">
+            <div class="prop_title">
+                提示信息
+            </div>
+            <div class="prop_message">
+                <ul class="clear">
+                    <li></li>
+                    <li>
+                        <span>商品加入购物车成功</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<StoreFooter></StoreFooter>
